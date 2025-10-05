@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BaintCryptoWallet — Receive</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <nav class="nav">
+      <div class="brand"><span class="logo">🪙</span> BaintCryptoWallet</div>
+      <div class="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="send.html">Send</a>
+        <a href="receive.html" class="active">Receive</a>
+        <a href="settings.html">Settings</a>
+        <a href="about.html">About</a>
+        <button id="connectBtnRecv" class="btn small ghost">Connect Wallet</button>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="card">
+        <h2>Receive</h2>
+        <div class="label">Your Address</div>
+        <div class="mono" id="recvAddr">—</div>
+        <div class="row" style="margin-top:8px">
+          <button id="copyRecv" class="btn ghost small">Copy Address</button>
+          <button id="qrBtn" class="btn small">Show QR</button>
+        </div>
+
+        <div id="qrArea" style="margin-top:12px;display:none">
+          <div class="label">QR Code</div>
+          <img id="qrImg" alt="QR" style="width:150px;height:150px;border-radius:8px;border:1px solid #eee" />
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="small muted">QR uses a public image generator (optional). Works offline without QR image.</div>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+  <script>initPage('receive')</script>
+</body>
+</html>
