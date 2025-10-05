@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BaintCryptoWallet — Send</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <nav class="nav">
+      <div class="brand"><span class="logo">🪙</span> BaintCryptoWallet</div>
+      <div class="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="send.html" class="active">Send</a>
+        <a href="receive.html">Receive</a>
+        <a href="settings.html">Settings</a>
+        <a href="about.html">About</a>
+        <button id="connectBtnSend" class="btn small ghost">Connect Wallet</button>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="card">
+        <h2>Send Tokens (Mock)</h2>
+        <div class="label">From</div>
+        <div class="mono" id="fromAddr">—</div>
+
+        <div style="margin-top:12px" class="label">Token</div>
+        <select id="tokenSelect" class="input">
+          <option value="mim">$MIMUSD</option>
+          <option value="baint">$BAINT</option>
+        </select>
+
+        <div class="label" style="margin-top:10px">To</div>
+        <input id="to" class="input" placeholder="Recipient address (0x...)" />
+
+        <div class="label" style="margin-top:10px">Amount</div>
+        <input id="amount" class="input" placeholder="Amount (e.g., 10)" />
+
+        <div class="row" style="margin-top:12px">
+          <button id="sendBtn" class="btn">Send (mock)</button>
+          <button id="previewBtn" class="btn ghost">Preview</button>
+        </div>
+
+        <div id="sendResult" style="margin-top:12px"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="small muted">Transactions are mocked locally for demo purposes.</div>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+  <script>initPage('send')</script>
+</body>
+</html>
