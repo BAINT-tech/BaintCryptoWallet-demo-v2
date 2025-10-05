@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BaintCryptoWallet — About</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <nav class="nav">
+      <div class="brand"><span class="logo">🪙</span> BaintCryptoWallet</div>
+      <div class="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="send.html">Send</a>
+        <a href="receive.html">Receive</a>
+        <a href="settings.html">Settings</a>
+        <a href="about.html" class="active">About</a>
+        <button id="connectBtnAbout" class="btn small ghost">Connect Wallet</button>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="card">
+        <h2>About BaintCryptoWallet</h2>
+        <p class="muted">
+          BaintCryptoWallet is a demo wallet built for the MEMES•MONETARY•INTERNET and ANCIENT•INTERNET•MEMES projects.
+          This static demo displays the user flows for generating a wallet, viewing balances for <strong>$MIMUSD</strong> and <strong>$BAINT</strong>,
+          sending mock transactions, and receiving funds via address/QR.
+        </p>
+
+        <h3>Vision</h3>
+        <p class="muted">Provide a friendly, meme-native gateway for your community to hold cultural value — progressing later to a full wallet with real testnet and multi-chain support.</p>
+
+        <h3>Next steps</h3>
+        <ul class="muted">
+          <li>Convert to React for real wallet integration (wagmi + Web3Modal)</li>
+          <li>Deploy $MIMUSD test token and add token interactions</li>
+          <li>Integrate DMEX for meme token trading</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="small muted">Built by BAINT-tech • Demo v2</div>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+  <script>initPage('about')</script>
+</body>
+</html>
