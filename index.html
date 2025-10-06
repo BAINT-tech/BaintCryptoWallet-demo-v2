@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BaintCryptoWallet — Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <nav class="nav">
+      <div class="brand"><span class="logo">🪙</span> BaintCryptoWallet</div>
+      <div class="nav-links">
+        <a href="index.html" class="active">Dashboard</a>
+        <a href="send.html">Send</a>
+        <a href="receive.html">Receive</a>
+        <a href="settings.html">Settings</a>
+        <a href="about.html">About</a>
+        <button id="connectBtn" class="btn small ghost">Connect Wallet</button>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="card">
+        <h2>Wallet</h2>
+        <div class="row">
+          <div>
+            <div class="label">Address</div>
+            <div class="mono" id="addr">—</div>
+            <div class="muted small">Demo wallet address (generated in browser)</div>
+          </div>
+          <div style="text-align:right">
+            <button id="genBtn" class="btn">Generate Wallet</button>
+            <button id="copyAddr" class="btn ghost small">Copy</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Balances</h3>
+        <div class="cols">
+          <div class="token">
+            <div class="label">$MIMUSD</div>
+            <div class="large" id="bal_mim">—</div>
+          </div>
+          <div class="token">
+            <div class="label">$BAINT</div>
+            <div class="large" id="bal_baint">—</div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:12px">
+          <button id="faucetMim" class="btn">Faucet +500 $MIMUSD</button>
+          <button id="faucetBaint" class="btn ghost">Faucet +200 $BAINT</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Recent Activity</h3>
+        <div id="activity" class="muted small">No activity yet. Send a mock transaction to see activity.</div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>Powered by LebelBros AI • Demo v2 — offline-safe</div>
+      <div class="small muted">Do NOT use generated keys on real networks.</div>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+  <script>initPage('dashboard')</script>
+</body>
+</html>
