@@ -1,73 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BaintCryptoWallet — Dashboard</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baint Wallet • Token Deployer (MetaMask Test Mode)</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, #0f172a, #1e293b);
+      color: #f1f5f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    p.note {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 0.75rem;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 1rem;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+  </style>
 </head>
 <body>
-  <div class="app">
-    <nav class="nav">
-      <div class="brand"><span class="logo">🪙</span> BaintCryptoWallet</div>
-      <div class="nav-links">
-        <a href="index.html" class="active">Dashboard</a>
-        <a href="send.html">Send</a>
-        <a href="receive.html">Receive</a>
-        <a href="settings.html">Settings</a>
-        <a href="about.html">About</a>
-        <button id="connectBtn" class="btn small ghost">Connect Wallet</button>
-      </div>
-    </nav>
+  <div class="card">
+    <h1>🪙 Baint Wallet • Token Deployer</h1>
+    <p>Deploy your test stablecoin ($MIMUSD, $BAINT) with one click</p>
 
-    <main class="container">
-      <section class="card">
-        <h2>Wallet</h2>
-        <div class="row">
-          <div>
-            <div class="label">Address</div>
-            <div class="mono" id="addr">—</div>
-            <div class="muted small">Demo wallet address (generated in browser)</div>
-          </div>
-          <div style="text-align:right">
-            <button id="genBtn" class="btn">Generate Wallet</button>
-            <button id="copyAddr" class="btn ghost small">Copy</button>
-          </div>
-        </div>
-      </section>
+    <button id="connect">Connect Baint Wallet (MetaMask Test Mode)</button>
+    <p class="note">
+      🧪 Currently running in MetaMask Test Mode — real Baint Wallet signer coming soon.
+    </p>
 
-      <section class="card">
-        <h3>Balances</h3>
-        <div class="cols">
-          <div class="token">
-            <div class="label">$MIMUSD</div>
-            <div class="large" id="bal_mim">—</div>
-          </div>
-          <div class="token">
-            <div class="label">$BAINT</div>
-            <div class="large" id="bal_baint">—</div>
-          </div>
-        </div>
-        <div class="row" style="margin-top:12px">
-          <button id="faucetMim" class="btn">Faucet +500 $MIMUSD</button>
-          <button id="faucetBaint" class="btn ghost">Faucet +200 $BAINT</button>
-        </div>
-      </section>
-
-      <section class="card">
-        <h3>Recent Activity</h3>
-        <div id="activity" class="muted small">No activity yet. Send a mock transaction to see activity.</div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div>Powered by LebelBros AI • Demo v2 — offline-safe</div>
-      <div class="small muted">Do NOT use generated keys on real networks.</div>
-    </footer>
+    <div id="deploySection" style="display:none;">
+      <input id="tokenName" placeholder="Token Name (e.g. MIMUSD)" />
+      <input id="tokenSymbol" placeholder="Token Symbol (e.g. MIMUSD)" />
+      <input id="tokenSupply" placeholder="Total Supply (e.g. 1000000)" />
+      <button id="deploy">🚀 Deploy Token</button>
+    </div>
   </div>
 
-  <div id="toast" class="toast"></div>
-  <script src="app.js"></script>
-  <script>initPage('dashboard')</script>
+  <footer>BaintCryptoWallet • 2025</footer>
+
+  <script>
+    const connectBtn = document.getElementById('connect');
+    const deploySection = document.getElementById('deploySection');
+    const deployBtn = document.getElementById('deploy');
+
+    connectBtn.onclick = async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          await ethereum.request({ method: 'eth_requestAccounts' });
+          connectBtn.textContent = '✅ Connected to Baint Wallet (Test Mode)';
+          deploySection.style.display = 'block';
+        } catch (err) {
+          alert('Connection rejected');
+        }
+      } else {
+        alert('MetaMask not detected. Please install it to continue.');
+      }
+    };
+
+    deployBtn.onclick = async () => {
+      alert('🚀 Token deployment simulation — this is test mode for $MIMUSD / $BAINT.');
+    };
+  </script>
 </body>
-            </html>
+</html>
